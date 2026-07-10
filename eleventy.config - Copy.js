@@ -8,7 +8,7 @@ const pathPrefix = process.env.PATH_PREFIX || "/";
 export default function (eleventyConfig) {
   // Copy static assets (downloaded images, css, etc.) straight through
   eleventyConfig.addPassthroughCopy("content/assets");
-  eleventyConfig.addPassthroughCopy({ "static/css": "css" });
+  eleventyConfig.addPassthroughCopy("static/css");
   eleventyConfig.addPassthroughCopy({
     "node_modules/@picocss/pico/css/pico.min.css": "css/pico.min.css",
   });

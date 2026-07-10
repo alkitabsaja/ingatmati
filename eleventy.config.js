@@ -1,5 +1,10 @@
 import { DateTime } from "./scripts/date-shim.js";
 
+// Set via env var in CI, e.g. PATH_PREFIX=/my-repo-name
+// Leave unset (or "/") for root deployments (custom domain, user/org pages,
+// Netlify/Vercel/Cloudflare Pages).
+const pathPrefix = process.env.PATH_PREFIX || "/";
+
 export default function (eleventyConfig) {
   // Copy static assets (downloaded images, css, etc.) straight through
   eleventyConfig.addPassthroughCopy("content/assets");
@@ -16,6 +21,16 @@ export default function (eleventyConfig) {
     return isNaN(d.getTime()) ? String(dateObj) : d.toISOString();
   });
 
+  // Prefixes an absolute path with pathPrefix, e.g. "/css/style.css" becomes
+  // "/my-repo/css/style.css" when deployed under a project subpath.
+  // Use this for every internal absolute link/src/href in templates.
+  eleventyConfig.addFilter("url", (relativePath = "") => {
+    if (/^https?:\/\//.test(relativePath)) return relativePath; // leave external URLs alone
+    const prefix = pathPrefix.replace(/\/$/, ""); // strip trailing slash
+    const path = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
+    return `${prefix}${path}` || "/";
+  });
+
   // Collection of all posts, newest first
   eleventyConfig.addCollection("posts", (collectionApi) => {
     return collectionApi
@@ -28,6 +43,7 @@ export default function (eleventyConfig) {
   });
 
   return {
+    pathPrefix,
     dir: {
       input: "content",
       includes: "../_includes",

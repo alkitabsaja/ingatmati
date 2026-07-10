@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}{% if title %} · {% endif %}My Static Blog</title>
   {% if excerpt %}<meta name="description" content="{{ excerpt }}">{% endif %}
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">My Static Blog</a>
+    <a class="site-title" href="{{ '/' | url }}">My Static Blog</a>
     <nav>
-      <a href="/">Home</a>
+      <a href="{{ '/' | url }}">Home</a>
       {% for page in collections.pages %}
-        <a href="{{ page.url }}">{{ page.data.title }}</a>
+        <a href="{{ page.url | url }}">{{ page.data.title }}</a>
       {% endfor %}
     </nav>
   </header>

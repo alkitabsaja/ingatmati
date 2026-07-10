@@ -2,6 +2,7 @@ name: Fetch, Build, and Deploy
 
 on:
   # Rebuild whenever you push changes to the repo (templates, styles, etc.)
+  # Excludes commits made by the bot itself to avoid an infinite trigger loop.
   push:
     branches: [main]
 
@@ -14,7 +15,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,33 +30,68 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Skip if triggered by the sync bot's own commit
+        id: skip_check
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && \
+             [ "$(git log -1 --pretty=%an)" = "wp-sync-bot" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Node
+        if: steps.skip_check.outputs.skip == 'false'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
 
       - name: Install dependencies
+        if: steps.skip_check.outputs.skip == 'false'
         run: npm ci
 
       - name: Fetch content from WordPress
+        if: steps.skip_check.outputs.skip == 'false'
         env:
           WP_SITE_URL: ${{ secrets.WP_SITE_URL }}
         run: npm run fetch
 
+      - name: Commit fetched content back to repo
+        if: steps.skip_check.outputs.skip == 'false'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "content: sync from WordPress"
+          commit_user_name: "wp-sync-bot"
+          commit_user_email: "actions@users.noreply.github.com"
+          file_pattern: "content/posts/*.md content/pages/*.md content/assets/**"
+
       - name: Build static site
+        if: steps.skip_check.outputs.skip == 'false'
+        env:
+          # GitHub Pages project sites are served at /<repo-name>/, so the
+          # site needs every internal link prefixed with that path.
+          # If you're using a custom domain or a "<user>.github.io" user/org
+          # repo (served at root), set repository variable PATH_PREFIX to
+          # empty/"/" to override this — see README for details.
+          PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
         run: npm run build
 
       - name: Setup Pages
+        if: steps.skip_check.outputs.skip == 'false'
         uses: actions/configure-pages@v5
 
       - name: Upload build artifact
+        if: steps.skip_check.outputs.skip == 'false'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site"
+    outputs:
+      skip: ${{ steps.skip_check.outputs.skip }}
 
   deploy:
     needs: build
+    if: needs.build.outputs.skip == 'false'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

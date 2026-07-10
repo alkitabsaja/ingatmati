@@ -7,7 +7,7 @@ title: "Home"
 <ul class="post-list">
   {% for post in collections.posts %}
   <li class="post-list-item">
-    <a href="{{ post.url }}">
+    <a href="{{ post.url | url }}">
       <h2>{{ post.data.title }}</h2>
     </a>
     <p class="post-meta">
@@ -21,3 +21,5 @@ title: "Home"
   <li>No posts yet — run <code>npm run fetch</code> against your WordPress site first.</li>
   {% endfor %}
 </ul>
+
+

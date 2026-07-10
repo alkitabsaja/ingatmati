@@ -144,7 +144,6 @@ async function processCollection(endpoint, outDir, typeLabel) {
       `slug: "${slug}"`,
       `date: ${date}`,
       `modified: ${modified}`,
-      `permalink: "/${typeLabel === "pages" ? "" : "posts/"}${slug}/"`,
       `layout: "${typeLabel === "pages" ? "page" : "post"}.njk"`,
     ];
 

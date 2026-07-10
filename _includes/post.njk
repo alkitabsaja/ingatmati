@@ -13,7 +13,7 @@ layout: base.njk
   </p>
 
   {% if image %}
-    <img class="featured-image" src="{{ image }}" alt="{{ title }}">
+    <img class="featured-image" src="{{ image | url }}" alt="{{ title }}">
   {% endif %}
 
   <div class="post-content">

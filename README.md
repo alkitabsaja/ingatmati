@@ -23,6 +23,29 @@ WordPress (REST API) → fetch-content.js → Markdown → Eleventy → _site/ �
 No WordPress plugin is required — this only uses the REST API that's enabled
 by default on any standard WordPress install.
 
+### Fetched content is committed back to the repo
+
+After every fetch, the workflow commits any new/changed Markdown files and
+images in `content/posts/`, `content/pages/`, and `content/assets/` back to
+`main`, authored by a bot user (`wp-sync-bot`). This means:
+
+- Your repo always has an up-to-date, version-controlled copy of your
+  WordPress content as plain Markdown files — you can browse it, diff it,
+  or `git clone` it independently of the built site.
+- If nothing changed since the last fetch, no commit is made (the action
+  no-ops on an empty diff).
+- To avoid an infinite loop (bot commits → triggers `push` → triggers
+  workflow → fetches again → commits again → ...), the workflow checks
+  whether the triggering commit's author is `wp-sync-bot` and skips the
+  rest of the job if so. Scheduled and manual runs are unaffected — only
+  a `push` event caused by the bot's own commit is skipped.
+
+If you'd rather **not** commit fetched content back to git (e.g. you're
+deploying to Netlify/Vercel/Cloudflare Pages and only care about the built
+output), just delete the "Commit fetched content back to repo" step from
+the workflow — the build will still work exactly the same, it just won't
+persist the intermediate Markdown.
+
 ## Local setup
 
 ```bash
@@ -81,11 +104,50 @@ The workflow also runs automatically every 6 hours (see the `cron` schedule
 in `.github/workflows/deploy.yml`) so new WordPress posts show up without
 you doing anything. Adjust the schedule to taste — e.g. `0 * * * *` for hourly.
 
+### Serving from a subpath (`/reponame/`) vs. root
+
+GitHub Pages serves **project repos** (anything not named `<username>.github.io`)
+at a subpath: `https://<username>.github.io/<reponame>/`. Every internal link
+(CSS, images, nav links) needs that `/reponame/` prefix baked in, or your CSS
+and links will 404.
+
+This is handled automatically:
+
+- `eleventy.config.js` reads a `PATH_PREFIX` env var and applies it via
+  Eleventy's `pathPrefix` option plus a custom `url` template filter.
+- All templates (`base.njk`, `post.njk`, `content/index.njk`) already wrap
+  every internal absolute link/href/src in `{{ ... | url }}`, so they pick up
+  the prefix automatically.
+- The included GitHub Actions workflow auto-computes `PATH_PREFIX` from your
+  **repo name** at build time — no manual configuration needed for a normal
+  project repo.
+
+**You only need to override this if:**
+- You're using a **custom domain** (site served at root, not a subpath), or
+- Your repo is named exactly `<username>.github.io` (also served at root), or
+- You're deploying to Netlify/Vercel/Cloudflare Pages instead (also root by
+  default).
+
+To override: in your repo, go to **Settings → Secrets and variables →
+Actions → Variables tab → New repository variable**, name it `PATH_PREFIX`,
+and set it to `/` (root). The workflow prefers this variable over the
+auto-computed repo name when it's set.
+
+For local builds, root is the default — no env var needed:
+
+```bash
+npm run build              # builds for root ("/")
+PATH_PREFIX=/my-repo npm run build   # builds for a subpath, e.g. to test
+                                       # exactly what GitHub Pages will serve
+```
+
 ### Using a custom domain with GitHub Pages
 
 Add a `CNAME` file to `static/` (Eleventy will need a passthrough copy, or
 just drop it directly in `_site` post-build) containing your domain, and
-configure a `CNAME` DNS record pointing to `<username>.github.io`. See
+configure a `CNAME` DNS record pointing to `<username>.github.io`. Also set
+the `PATH_PREFIX` repository variable to `/` as described above, since custom
+domains are served from root. See
 [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 for details.
 
@@ -99,6 +161,10 @@ included GitHub Actions workflow — just point them at the repo and set:
   scheduled job/webhook)*
 - **Publish directory:** `_site`
 - **Environment variable:** `WP_SITE_URL=https://yoursite.com`
+
+These platforms serve your site from the **root** of their own domain/subdomain
+(e.g. `yoursite.netlify.app`), so you do **not** need to set `PATH_PREFIX` —
+leave it unset and it defaults to `/`.
 
 These platforms have their own free tiers and typically deploy on every
 push automatically. To pick up *new WordPress content* without a new git

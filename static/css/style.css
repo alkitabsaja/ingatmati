@@ -2,8 +2,12 @@
    Pico handles all base typography, colors, and dark/light theming —
    this file only tweaks a few things for a comfortable reading layout. */
 
+/* Optimal reading measure is ~60-75 characters per line; 65ch lands right
+   in the middle. Using `ch` (not a fixed px value) means the line length
+   stays consistent in characters even if someone bumps their browser's
+   base font size. */
 .container {
-  max-width: 700px;
+  max-width: 65ch;
 }
 
 .site-header {

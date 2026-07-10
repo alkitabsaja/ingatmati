@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}{% if title %} · {% endif %}My Static Blog</title>
+  {% if excerpt %}<meta name="description" content="{{ excerpt }}">{% endif %}
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">My Static Blog</a>
+    <nav>
+      <a href="/">Home</a>
+      {% for page in collections.pages %}
+        <a href="{{ page.url }}">{{ page.data.title }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>Built from WordPress content &middot; rebuilt automatically &middot; hosted for free.</p>
+  </footer>
+</body>
+</html>

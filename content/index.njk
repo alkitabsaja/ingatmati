@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: "Home"
+---
+<h1>Latest Posts</h1>
+
+<ul class="post-list">
+  {% for post in collections.posts %}
+  <li class="post-list-item">
+    <a href="{{ post.url }}">
+      <h2>{{ post.data.title }}</h2>
+    </a>
+    <p class="post-meta">
+      <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time>
+    </p>
+    {% if post.data.excerpt %}
+      <p class="post-excerpt">{{ post.data.excerpt }}</p>
+    {% endif %}
+  </li>
+  {% else %}
+  <li>No posts yet — run <code>npm run fetch</code> against your WordPress site first.</li>
+  {% endfor %}
+</ul>

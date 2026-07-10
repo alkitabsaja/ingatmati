@@ -1,0 +1,17 @@
+{
+  "name": "wp-static-site",
+  "version": "1.0.0",
+  "description": "Fetches content from WordPress REST API, builds a static site with Eleventy, and deploys it.",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch-content.js",
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "clean": "rm -rf _site content/posts/*.md content/pages/*.md",
+    "sync": "npm run fetch && npm run build"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "turndown": "^7.2.0"
+  }
+}

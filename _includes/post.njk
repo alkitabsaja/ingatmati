@@ -1,0 +1,28 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <h1>{{ title }}</h1>
+  <p class="post-meta">
+    {% if author %}By {{ author }} &middot; {% endif %}
+    <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+    {% if categories %}
+      &middot;
+      {% for cat in categories %}<span class="tag">{{ cat }}</span>{% endfor %}
+    {% endif %}
+  </p>
+
+  {% if image %}
+    <img class="featured-image" src="{{ image }}" alt="{{ title }}">
+  {% endif %}
+
+  <div class="post-content">
+    {{ content | safe }}
+  </div>
+
+  {% if tags %}
+    <p class="post-tags">
+      {% for tag in tags %}<span class="tag">#{{ tag }}</span>{% endfor %}
+    </p>
+  {% endif %}
+</article>

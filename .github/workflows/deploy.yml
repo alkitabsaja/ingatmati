@@ -20,12 +20,17 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "deploy"
   cancel-in-progress: false
 
 jobs:
-  build:
+  # Fetches fresh content from WordPress once and commits it back to the
+  # repo. Both deploy targets below check out this same commit, so they
+  # always build from identical content.
+  fetch-content:
     runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.skip_check.outputs.skip }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -66,37 +71,83 @@ jobs:
           commit_user_email: "actions@users.noreply.github.com"
           file_pattern: "content/posts content/pages content/assets"
 
-      - name: Build static site
-        if: steps.skip_check.outputs.skip == 'false'
-        env:
-          # GitHub Pages project sites are served at /<repo-name>/, so the
-          # site needs every internal link prefixed with that path.
-          # If you're using a custom domain or a "<user>.github.io" user/org
-          # repo (served at root), set repository variable PATH_PREFIX to
-          # empty/"/" to override this — see README for details.
-          PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
-        run: npm run build
-
-      - name: Setup Pages
-        if: steps.skip_check.outputs.skip == 'false'
-        uses: actions/configure-pages@v5
-
-      - name: Upload build artifact
-        if: steps.skip_check.outputs.skip == 'false'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "_site"
-    outputs:
-      skip: ${{ steps.skip_check.outputs.skip }}
-
-  deploy:
-    needs: build
-    if: needs.build.outputs.skip == 'false'
+  # Builds with a /<repo-name>/ path prefix (how GitHub Pages serves project
+  # repos) and deploys via the Pages API.
+  deploy-pages:
+    needs: fetch-content
+    if: needs.fetch-content.outputs.skip == 'false'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout repo (latest, including bot commit)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site for GitHub Pages
+        env:
+          # GitHub Pages project sites are served at /<repo-name>/, so the
+          # site needs every internal link prefixed with that path.
+          # If you're using a custom domain or a "<user>.github.io" user/org
+          # repo (served at root), set repository variable PATH_PREFIX to
+          # "/" to override this — see README for details.
+          PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Builds with no path prefix (Surge serves from the root of its own
+  # domain/subdomain) and deploys via the Surge CLI.
+  deploy-surge:
+    needs: fetch-content
+    if: needs.fetch-content.outputs.skip == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (latest, including bot commit)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site for Surge
+        env:
+          # Surge serves from the root of its own domain/subdomain, so no
+          # path prefix is needed (unlike GitHub Pages project repos).
+          PATH_PREFIX: "/"
+        run: npm run build
+
+      - name: Deploy to Surge
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npx surge _site "${{ vars.SURGE_DOMAIN }}" --token "$SURGE_TOKEN"

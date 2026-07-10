@@ -175,6 +175,38 @@ push, either:
   rebuild on demand — this is the fastest way to get "publish in WordPress
   → live in seconds."
 
+## Styling and dark/light theme
+
+The site uses [Pico CSS](https://picocss.com) (v2), a small classless-first
+CSS framework that styles semantic HTML directly — no utility classes
+needed. It's self-hosted from `node_modules` (not a CDN), so builds work
+offline and don't depend on a third party at runtime.
+
+- **Dark/light mode is built in.** By default the site follows the visitor's
+  OS-level preference (`prefers-color-scheme`).
+- **A toggle button** (sun/moon icon, top right) lets visitors override that
+  and pick light or dark explicitly. Their choice is saved in
+  `localStorage` and persists across visits.
+- **No flash of the wrong theme:** a small inline script in `<head>` applies
+  the saved preference before the page paints.
+- `static/css/style.css` contains only small layout overrides (reading-width
+  container, nav spacing, toggle button styling) — all actual colors and
+  component styling come from Pico's CSS variables, so re-theming means
+  swapping Pico's color variant or overriding a handful of `--pico-*`
+  variables, not rewriting a stylesheet.
+
+To use a different built-in Pico color scheme (e.g. blue, emerald), swap the
+passthrough copy path in `eleventy.config.js`:
+
+```js
+eleventyConfig.addPassthroughCopy({
+  "node_modules/@picocss/pico/css/pico.min.css": "css/pico.min.css",
+});
+```
+
+to point at any file in `node_modules/@picocss/pico/css/` (see that folder
+for all available color/style variants).
+
 ## Project structure
 
 ```
@@ -185,10 +217,10 @@ push, either:
 │   ├── assets/images/   ← downloaded featured images
 │   └── index.njk        ← homepage template (lists posts)
 ├── _includes/
-│   ├── base.njk          ← shared HTML shell
+│   ├── base.njk          ← shared HTML shell + Pico CSS + theme toggle
 │   ├── post.njk          ← single post layout
 │   └── page.njk          ← single page layout
-├── static/css/style.css   ← site styling
+├── static/css/style.css   ← small overrides on top of Pico CSS
 ├── scripts/
 │   ├── fetch-content.js   ← WP REST API → Markdown converter
 │   └── date-shim.js       ← tiny date formatter (no external deps)

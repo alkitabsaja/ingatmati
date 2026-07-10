@@ -9,6 +9,9 @@ export default function (eleventyConfig) {
   // Copy static assets (downloaded images, css, etc.) straight through
   eleventyConfig.addPassthroughCopy("content/assets");
   eleventyConfig.addPassthroughCopy("static/css");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@picocss/pico/css/pico.min.css": "css/pico.min.css",
+  });
 
   // Human-friendly date filter for templates: {{ date | readableDate }}
   eleventyConfig.addFilter("readableDate", (dateObj) => {

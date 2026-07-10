@@ -3,27 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title>{{ title }}{% if title %} · {% endif %}My Static Blog</title>
   {% if excerpt %}<meta name="description" content="{{ excerpt }}">{% endif %}
+
+  <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+
+  <!--
+    Set the theme before first paint to avoid a flash of the wrong theme.
+    Reads a saved preference from localStorage; falls back to the visitor's
+    OS-level preference (handled automatically by Pico's CSS when no
+    data-theme attribute is present at all).
+  -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    })();
+  </script>
 </head>
 <body>
-  <header class="site-header">
+  <header class="container site-header">
     <a class="site-title" href="{{ '/' | url }}">My Static Blog</a>
-    <nav>
-      <a href="{{ '/' | url }}">Home</a>
-      {% for page in collections.pages %}
-        <a href="{{ page.url | url }}">{{ page.data.title }}</a>
-      {% endfor %}
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="{{ '/' | url }}">Home</a></li>
+        {% for page in collections.pages %}
+          <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+        {% endfor %}
+        <li>
+          <button id="theme-toggle" type="button" aria-label="Toggle dark and light theme" title="Toggle theme">
+            <span id="theme-toggle-icon" aria-hidden="true">&#9789;</span>
+          </button>
+        </li>
+      </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="container">
     {{ content | safe }}
   </main>
 
-  <footer class="site-footer">
-    <p>Built from WordPress content &middot; rebuilt automatically &middot; hosted for free.</p>
+  <footer class="container">
+    <small>Built from WordPress content &middot; rebuilt automatically &middot; hosted for free.</small>
   </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var icon = document.getElementById("theme-toggle-icon");
+      var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function currentTheme() {
+        var forced = root.getAttribute("data-theme");
+        if (forced === "light" || forced === "dark") return forced;
+        return mediaQuery.matches ? "dark" : "light";
+      }
+
+      function updateIcon() {
+        // Sun icon when in dark mode (tap to go light), moon when in light mode (tap to go dark)
+        icon.innerHTML = currentTheme() === "dark" ? "&#9728;" : "&#9789;";
+      }
+
+      toggle.addEventListener("click", function () {
+        var next = currentTheme() === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        updateIcon();
+      });
+
+      updateIcon();
+    })();
+  </script>
 </body>
 </html>

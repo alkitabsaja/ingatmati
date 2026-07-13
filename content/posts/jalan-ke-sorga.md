@@ -5,6 +5,7 @@ date: 2022-02-20T16:52:53
 modified: 2022-02-20T16:58:21
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/jalan-ke-sorga/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "1. Akui bahwa Anda adalah orang berdosa. Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah – Roma 3:23. Sebab"

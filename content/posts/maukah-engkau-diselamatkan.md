@@ -5,6 +5,7 @@ date: 2020-10-18T20:56:37
 modified: 2020-10-29T10:42:46
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/maukah-engkau-diselamatkan/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Semua manusia pada umumnya mendambakan keselamatan jiwanya setelah ia mati. Karena setiap orang tahu, dia adalah manusia berdosa yang akan"

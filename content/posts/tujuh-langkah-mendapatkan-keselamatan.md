@@ -5,6 +5,7 @@ date: 2024-09-03T09:40:03
 modified: 2024-09-03T09:40:05
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/tujuh-langkah-mendapatkan-keselamatan/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Langkah pertama – Anda harus menyadari bahwa Anda adalah orang berdosa.“Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan"

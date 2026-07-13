@@ -5,6 +5,7 @@ date: 2020-10-20T21:13:50
 modified: 2024-01-19T17:05:07
 layout: "page.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/"
 excerpt: "Keadilan Tuhan membuat Dia harus menghukum manusia yang berdosa. Hukuman dosa adalah maut. Dosa tidak dapat selesai tanpa penghukuman. Dosa"
 ---
 Kepastian Keselamatan

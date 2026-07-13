@@ -5,6 +5,7 @@ date: 2020-11-15T17:17:04
 modified: 2020-11-15T17:19:20
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/ketika-anda-mati/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Manusia selama hidupnya berusaha semaksimal mungkin untuk senantiasa hidup bahagia dan menghindari segala bentuk kesusahan. Namun apa daya, pada kenyataannya,"

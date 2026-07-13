@@ -5,6 +5,7 @@ date: 2020-11-01T18:58:35
 modified: 2020-11-01T18:58:36
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/tuhan-kok-mati/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Jika Tuhan mati, maka segala sesuatu akan lenyap, kesunyian tidak sunyi lagi, indahnya pelangi dan makanan yang terlezat tidak akan"

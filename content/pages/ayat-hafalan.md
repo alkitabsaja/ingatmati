@@ -5,5 +5,6 @@ date: 2021-12-02T07:52:34
 modified: 2021-12-02T07:52:44
 layout: "page.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/ayat-hafalan/"
 ---
 

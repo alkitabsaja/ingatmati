@@ -5,6 +5,7 @@ date: 2020-10-27T21:06:16
 modified: 2020-10-29T10:42:46
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/saya-mati-kemana/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Salah satu pertanyaan terbesar dalam sejarah umat manusia adalah “Kemana saya setelah mati”? Banyak orang memikirkan pertanyaan ini dan belum menemukan jawaban yang"

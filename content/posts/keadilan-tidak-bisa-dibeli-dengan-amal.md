@@ -5,6 +5,7 @@ date: 2026-03-16T11:26:09
 modified: 2026-03-16T11:26:11
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/keadilan-tidak-bisa-dibeli-dengan-amal/"
 categories: ["jalan yang lurus"]
 excerpt: "Bayangkan pemilik dapur MBG korupsi 10M, hakim melepaskan orang tersebut karena dia memberikan santunan kepada 100 orang anak Yatim-Piatu. Adilkah?"
 ---

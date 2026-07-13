@@ -5,6 +5,7 @@ date: 2022-12-16T07:45:06
 modified: 2022-12-16T16:38:19
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/abcd-keselamatan-jiwa/"
 categories: ["jalan yang lurus"]
 excerpt: "MatiKemana.com@alkitabsaja A: AKUILAH Tuhan Maha Adil, saya berdosa jadi Tuhan pasti harus menghukum semua dan setiap dosa saya.upah dosa terhadap"
 ---

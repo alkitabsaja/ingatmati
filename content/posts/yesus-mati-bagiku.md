@@ -5,6 +5,7 @@ date: 2020-12-05T21:45:00
 modified: 2025-07-09T09:53:31
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/yesus-mati-bagiku/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Bob JenningsKepada jemaat-jemaat di Galatia, Kasih karunia menyertai kamu dan Damai sejahtera dari Tuhan, Bapa kita dan dari Tuhan Yesus"

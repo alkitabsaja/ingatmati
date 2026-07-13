@@ -5,6 +5,7 @@ date: 2021-09-29T23:43:36
 modified: 2021-09-29T23:43:38
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/kebenaran-hal-neraka/"
 categories: ["jalan yang lurus"]
 tags: ["neraka"]
 excerpt: "NERAKA ADALAH TEMPAT PENYIKSAAN(terjemahan repentancecry) Yesus berkata tentang neraka dalam Lukas 16:23 .. ia menderita sengsara di alam maut ..24"

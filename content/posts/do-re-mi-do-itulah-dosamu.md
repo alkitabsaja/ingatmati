@@ -5,6 +5,7 @@ date: 2023-04-09T06:52:59
 modified: 2025-07-11T00:31:23
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/do-re-mi-do-itulah-dosamu/"
 categories: ["jalan yang lurus"]
 excerpt: "DO: itulah DOSAMU! www.MatiKemana.com Yesaya 59:2 (TB) tetapi yang merupakan pemisah antara kamu dan Allahmu ialah segala kejahatanmu, dan yang membuat"
 ---

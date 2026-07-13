@@ -5,6 +5,7 @@ date: 2020-12-03T21:23:03
 modified: 2025-07-09T09:55:39
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/apa-keselamatan-itu/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "Saat ini Tuhan memerintahkan semua orang untuk bertobat dan percaya Hari ini adalah hari keselamatan anda bebas dari murka-Nya yang"

@@ -5,6 +5,7 @@ date: 2020-10-29T08:17:20
 modified: 2020-10-29T10:42:46
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/hari-pertama-orang-berdosa-di-neraka/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
 excerpt: "(A Sinner’s First Day in Hell\\*) Oleh Dr. Denis Leatherman “Dan jika tanganmu menyesatkan engkau, penggallah, karena lebih baik engkau"

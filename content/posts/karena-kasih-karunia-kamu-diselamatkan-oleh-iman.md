@@ -5,6 +5,7 @@ date: 2025-07-11T08:54:01
 modified: 2025-07-11T08:54:02
 layout: "post.njk"
 author: "ingat mati"
+originalUrl: "https://www.matikemana.com/web1/karena-kasih-karunia-kamu-diselamatkan-oleh-iman/"
 categories: ["jalan yang lurus"]
 excerpt: "Efesus 2:8-9 (TB) Sebab karena kasih karunia kamu diselamatkan oleh iman; itu bukan hasil usahamu, tetapi pemberian Allah, itu bukan"
 ---

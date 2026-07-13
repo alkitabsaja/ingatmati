@@ -207,6 +207,37 @@ eleventyConfig.addPassthroughCopy({
 to point at any file in `node_modules/@picocss/pico/css/` (see that folder
 for all available color/style variants).
 
+## SEO
+
+Several SEO essentials are built in and generated automatically:
+
+- **Canonical tags** point back to the original WordPress post/page URL
+  (captured in frontmatter as `originalUrl` during fetch), so search engines
+  treat WordPress as the authoritative source rather than flagging this
+  static mirror as duplicate content. Pages with no WordPress equivalent
+  (like the homepage) get a canonical pointing at their own absolute URL.
+- **Open Graph and Twitter Card meta tags** are generated per-page (title,
+  description, image, article type/author/publish-date for posts) so links
+  shared on social platforms and chat apps render nice previews.
+- **`robots.txt`** is generated at build time, allows all crawlers, and
+  points to the sitemap.
+- **`sitemap.xml`** is generated at build time, listing every post, page,
+  and the homepage as absolute URLs with `lastmod` dates.
+
+All of this depends on two things being set correctly at build time:
+
+- **`SITE_URL`** — the final public URL of the deployment (no trailing
+  slash), e.g. `https://username.github.io` or `https://my-site.surge.sh`.
+  Used to build every absolute URL (canonical fallback, OG tags, sitemap).
+  Defaults to a placeholder (`https://example.com`) if unset, so local
+  builds still succeed without it configured — just don't ship that build.
+- **`PATH_PREFIX`** — see the deployment sections above; affects the path
+  portion of every absolute URL the same way it affects internal links.
+
+The included GitHub Actions workflow already sets both correctly for both
+GitHub Pages and Surge deploys. If you add another host, set `SITE_URL`
+(and `PATH_PREFIX` if it serves from a subpath) in that build step too.
+
 ## Project structure
 
 ```
@@ -215,9 +246,11 @@ for all available color/style variants).
 │   ├── posts/          ← generated .md files (one per WP post)
 │   ├── pages/           ← generated .md files (one per WP page)
 │   ├── assets/images/   ← downloaded featured images
-│   └── index.njk        ← homepage template (lists posts)
+│   ├── index.njk        ← homepage template (lists posts)
+│   ├── robots.txt.njk    ← generated robots.txt
+│   └── sitemap.xml.njk   ← generated sitemap.xml
 ├── _includes/
-│   ├── base.njk          ← shared HTML shell + Pico CSS + theme toggle
+│   ├── base.njk          ← shared HTML shell + Pico CSS + theme toggle + SEO tags
 │   ├── post.njk          ← single post layout
 │   └── page.njk          ← single page layout
 ├── static/css/style.css   ← small overrides on top of Pico CSS

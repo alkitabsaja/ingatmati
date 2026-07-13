@@ -9,7 +9,7 @@ on:
   # Rebuild automatically on a schedule to pick up new WordPress content.
   # This example runs every 6 hours — adjust to taste.
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 1 * * 5"
 
   # Lets you trigger a rebuild manually from the Actions tab.
   workflow_dispatch:
@@ -103,6 +103,10 @@ jobs:
           # repo (served at root), set repository variable PATH_PREFIX to
           # "/" to override this — see README for details.
           PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
+          # Used to build absolute canonical URLs. Falls back to the default
+          # GitHub Pages URL; override with a repo variable if using a
+          # custom domain.
+          SITE_URL: ${{ vars.PAGES_SITE_URL || format('https://{0}.github.io', github.repository_owner) }}
         run: npm run build
 
       - name: Setup Pages
@@ -143,6 +147,8 @@ jobs:
           # Surge serves from the root of its own domain/subdomain, so no
           # path prefix is needed (unlike GitHub Pages project repos).
           PATH_PREFIX: "/"
+          # Used to build absolute canonical URLs.
+          SITE_URL: "https://${{ vars.SURGE_DOMAIN }}"
         run: npm run build
 
       - name: Deploy to Surge

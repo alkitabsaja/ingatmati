@@ -2,11 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="canonical" href="https://www.matikemana.com">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>{{ title }}{% if title %} · {% endif %}My Static Blog</title>
   {% if excerpt %}<meta name="description" content="{{ excerpt }}">{% endif %}
+
+  {# Canonical points back to the original WordPress post/page when this
+     content was synced from WP, so search engines treat WordPress as the
+     authoritative source and don't flag this static mirror as duplicate
+     content. Falls back to this page's own URL (e.g. the homepage, which
+     has no WP equivalent). #}
+  <link rel="canonical" href="{{ originalUrl or (page.url | absoluteUrl) }}">
+
+  {# Open Graph / Twitter card tags for link previews on social platforms
+     and chat apps. og:url intentionally points at *this* static site's own
+     URL (not originalUrl) since that's where the share link actually goes. #}
+  <meta property="og:type" content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ title }}{% if title %} · {% endif %}My Static Blog">
+  <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+  <meta property="og:site_name" content="My Static Blog">
+  {% if excerpt %}<meta property="og:description" content="{{ excerpt }}">{% endif %}
+  {% if image %}<meta property="og:image" content="{{ image | absoluteUrl }}">{% endif %}
+  {% if date %}<meta property="article:published_time" content="{{ date | isoDate }}">{% endif %}
+  {% if author %}<meta property="article:author" content="{{ author }}">{% endif %}
+
+  <meta name="twitter:card" content="{% if image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ title }}{% if title %} · {% endif %}My Static Blog">
+  {% if excerpt %}<meta name="twitter:description" content="{{ excerpt }}">{% endif %}
+  {% if image %}<meta name="twitter:image" content="{{ image | absoluteUrl }}">{% endif %}
 
   <link rel="stylesheet" href="{{ '/css/pico.min.css' | url }}">
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
@@ -49,7 +72,7 @@
   </main>
 
   <footer class="container">
-    <small>backup mirror from matikemana.com</small>
+    <small>mirror matikemana.com</small>
   </footer>
 
   <script>

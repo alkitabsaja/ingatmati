@@ -5,6 +5,13 @@ import { DateTime } from "./scripts/date-shim.js";
 // Netlify/Vercel/Cloudflare Pages).
 const pathPrefix = process.env.PATH_PREFIX || "/";
 
+// The final public URL of this deployment, e.g. https://username.github.io
+// or https://my-project.surge.sh — used to build absolute canonical URLs
+// for pages that don't have an original WordPress URL (like the homepage).
+// No trailing slash. Falls back to a placeholder if unset so builds still
+// succeed locally without it configured.
+const siteUrl = (process.env.SITE_URL || "https://example.com").replace(/\/$/, "");
+
 export default function (eleventyConfig) {
   // Copy static assets (downloaded images, css, etc.) straight through
   eleventyConfig.addPassthroughCopy("content/assets");
@@ -12,6 +19,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "node_modules/@picocss/pico/css/pico.min.css": "css/pico.min.css",
   });
+
+  eleventyConfig.addGlobalData("siteUrl", siteUrl);
 
   // Human-friendly date filter for templates: {{ date | readableDate }}
   eleventyConfig.addFilter("readableDate", (dateObj) => {
@@ -32,6 +41,16 @@ export default function (eleventyConfig) {
     const prefix = pathPrefix.replace(/\/$/, ""); // strip trailing slash
     const path = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
     return `${prefix}${path}` || "/";
+  });
+
+  // Builds a full absolute URL (with domain) from a site-relative path,
+  // applying pathPrefix along the way. Use for canonical tags, OG tags,
+  // sitemaps, and anywhere else a fully-qualified URL is required.
+  eleventyConfig.addFilter("absoluteUrl", (relativePath = "") => {
+    if (/^https?:\/\//.test(relativePath)) return relativePath; // already absolute
+    const prefix = pathPrefix.replace(/\/$/, "");
+    const path = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
+    return `${siteUrl}${prefix}${path}`;
   });
 
   // Collection of all posts, newest first

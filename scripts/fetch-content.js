@@ -117,6 +117,7 @@ async function processCollection(endpoint, outDir, typeLabel) {
     const slug = item.slug || String(item.id);
     const date = item.date || new Date().toISOString();
     const modified = item.modified || date;
+    const originalUrl = item.link || null;
 
     // Featured image, if present via _embed
     const media = item._embedded?.["wp:featuredmedia"]?.[0];
@@ -148,6 +149,7 @@ async function processCollection(endpoint, outDir, typeLabel) {
     ];
 
     if (author) frontmatterLines.push(`author: "${yamlEscape(author)}"`);
+    if (originalUrl) frontmatterLines.push(`originalUrl: "${originalUrl}"`);
     if (featuredImage) frontmatterLines.push(`image: "${featuredImage}"`);
     if (categories.length) {
       frontmatterLines.push(`categories: [${categories.map((c) => `"${yamlEscape(c)}"`).join(", ")}]`);

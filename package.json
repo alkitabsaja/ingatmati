@@ -1,7 +1,7 @@
 {
   "name": "wp-static-site",
   "version": "1.0.0",
-  "description": "backup mirror from matikemana.com",
+  "description": "Fetches content from WordPress REST API, builds a static site with Eleventy, and deploys it.",
   "type": "module",
   "scripts": {
     "fetch": "node scripts/fetch-content.js",

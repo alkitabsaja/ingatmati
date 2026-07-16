@@ -10,7 +10,26 @@ const pathPrefix = process.env.PATH_PREFIX || "/";
 // for pages that don't have an original WordPress URL (like the homepage).
 // No trailing slash. Falls back to a placeholder if unset so builds still
 // succeed locally without it configured.
-const siteUrl = (process.env.SITE_URL || "https://example.com").replace(/\/$/, "");
+//
+// Defensively normalized: if SITE_URL was accidentally passed without a
+// scheme (just "my-site.surge.sh") we add https://; if it was passed with
+// one already we leave it as-is. This guards against configs that
+// mistakenly do something like `"https://" + vars.SOME_DOMAIN` when
+// SOME_DOMAIN already includes the scheme, which would otherwise produce
+// "https://https://...".
+function normalizeSiteUrl(rawUrl) {
+  let value = (rawUrl || "https://example.com").trim().replace(/\/$/, "");
+  // Capture the first scheme actually present (defaults to https if none),
+  // then strip *all* scheme prefixes so a doubled one like
+  // "https://https://x.com" or "https://http://x.com" collapses correctly
+  // instead of being left with a scheme still embedded in the host.
+  const firstSchemeMatch = value.match(/^(https?):\/\//i);
+  const scheme = firstSchemeMatch ? firstSchemeMatch[1].toLowerCase() : "https";
+  value = value.replace(/^(https?:\/\/)+/i, "");
+  return `${scheme}://${value}`;
+}
+
+const siteUrl = normalizeSiteUrl(process.env.SITE_URL);
 
 export default function (eleventyConfig) {
   // Copy static assets (downloaded images, css, etc.) straight through

@@ -147,8 +147,10 @@ jobs:
           # Surge serves from the root of its own domain/subdomain, so no
           # path prefix is needed (unlike GitHub Pages project repos).
           PATH_PREFIX: "/"
-          # Used to build absolute canonical URLs.
-          SITE_URL: "https://${{ vars.SURGE_DOMAIN }}"
+          # Used to build absolute canonical URLs. Set the SURGE_DOMAIN repo
+          # variable to just the bare domain (e.g. "my-site.surge.sh"), not
+          # a full URL — eleventy.config.js will add the https:// scheme.
+          SITE_URL: "${{ vars.SURGE_DOMAIN }}"
         run: npm run build
 
       - name: Deploy to Surge

@@ -16,6 +16,10 @@
 //     rate-limited. Get a free key at https://archive.org/account/s3.php
 //   ARCHIVE_DELAY_MS (default: 5000)
 //     Delay between requests, to stay under archive.org's rate limits.
+//   ARCHIVE_BATCH_SIZE (default: 5)
+//     Max number of URLs to archive in a single run. The rest are left
+//     for the next run — safe to just re-run this script (or let the
+//     scheduled CI workflow do it) repeatedly until everything's archived.
 //   ARCHIVE_STATE_FILE (default: .archive-state.json)
 //     Tracks which URLs have already been archived so reruns don't
 //     resubmit everything every time. Commit this file to the repo (or let
@@ -28,6 +32,7 @@ import path from "node:path";
 const CONTENT_DIRS = ["./content/posts", "./content/pages"];
 const STATE_FILE = process.env.ARCHIVE_STATE_FILE || "./.archive-state.json";
 const DELAY_MS = Number(process.env.ARCHIVE_DELAY_MS || 5000);
+const BATCH_SIZE = Number(process.env.ARCHIVE_BATCH_SIZE || 5);
 const ACCESS_KEY = process.env.ARCHIVE_ORG_ACCESS_KEY;
 const SECRET_KEY = process.env.ARCHIVE_ORG_SECRET_KEY;
 
@@ -121,11 +126,15 @@ async function main() {
   }
 
   const state = loadState();
-  const toArchive = urls.filter((url) => !state[url]);
+  const remaining = urls.filter((url) => !state[url]);
+  const toArchive = remaining.slice(0, BATCH_SIZE);
 
-  console.log(`Found ${urls.length} content URLs, ${toArchive.length} not yet archived.`);
+  console.log(
+    `Found ${urls.length} content URLs, ${remaining.length} not yet archived. ` +
+      `Archiving up to ${BATCH_SIZE} this run.`
+  );
 
-  if (toArchive.length === 0) {
+  if (remaining.length === 0) {
     console.log("Everything is already archived. Nothing to do.");
     return;
   }
@@ -171,7 +180,13 @@ async function main() {
     }
   }
 
-  console.log(`\nDone. Archived ${archivedCount}, failed ${failedCount}, state saved to ${STATE_FILE}.`);
+  const stillRemaining = remaining.length - archivedCount;
+  const continuationNote = stillRemaining > 0 ? " (will continue on the next run)" : "";
+  console.log(
+    `\nDone. Archived ${archivedCount}, failed ${failedCount} this run. ` +
+      `${stillRemaining} URL${stillRemaining === 1 ? "" : "s"} still left to archive` +
+      `${continuationNote}. State saved to ${STATE_FILE}.`
+  );
 }
 
 main().catch((err) => {

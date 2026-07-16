@@ -7,7 +7,7 @@ layout: "post.njk"
 author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/do-re-mi-do-itulah-dosamu/"
 categories: ["jalan yang lurus"]
-excerpt: "DO: itulah DOSAMU! www.MatiKemana.com Yesaya 59:2 (TB) tetapi yang merupakan pemisah antara kamu dan Allahmu ialah segala kejahatanmu, dan yang membuat"
+excerpt: "DO: itulah DOSAMU! www.MatiKemana.com Yesaya 59:2 (TB) tetapi yang merupakan pemisah antara kamu dan Allahmu ialah segala kejahatanmu, dan yang membuat Dia menyembunyikan diri terhadap kamu, sehingga Ia tidak mendengar, ialah segala dosamu.  Roma 3:23 (TB) Karena semua orang telah berbuat dosa dan t"
 ---
 ## DO: itulah DOSAMU!
 

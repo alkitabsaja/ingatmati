@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/yesus-mati-bagiku/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Bob JenningsKepada jemaat-jemaat di Galatia, Kasih karunia menyertai kamu dan Damai sejahtera dari Tuhan, Bapa kita dan dari Tuhan Yesus"
+excerpt: "Bob JenningsKepada jemaat-jemaat di Galatia, Kasih karunia menyertai kamu dan Damai sejahtera dari Tuhan, Bapa kita dan dari Tuhan Yesus Kristus yang telah menyerahkan diri-Nya… karena dosa-dosa kita, untuk melepaskan kita dari dunia jahat yang sekarang ini, menurut kehendak Tuhan Bapa kita Bagi-Nya"
 ---
 _Bob Jennings_  
 Kepada jemaat-jemaat di Galatia, Kasih karunia menyertai kamu dan Damai sejahtera dari Tuhan, Bapa kita dan dari Tuhan Yesus Kristus yang telah menyerahkan diri-Nya… karena dosa-dosa kita, untuk melepaskan kita dari dunia jahat yang sekarang ini, menurut kehendak Tuhan Bapa kita Bagi-Nyalah kemuliaan selama-lamanya! amin.

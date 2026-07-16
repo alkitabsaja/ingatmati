@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/saya-mati-kemana/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Salah satu pertanyaan terbesar dalam sejarah umat manusia adalah “Kemana saya setelah mati”? Banyak orang memikirkan pertanyaan ini dan belum menemukan jawaban yang"
+excerpt: "Salah satu pertanyaan terbesar dalam sejarah umat manusia adalah “Kemana saya setelah mati”? Banyak orang memikirkan pertanyaan ini dan belum menemukan jawaban yang pasti. Dalam ketidakpastian itu manusia mencari jawabannya dalam agama, filsafat, sains, bahkan dalam dirinya sendiri. Berharap mereka "
 ---
 Salah satu pertanyaan terbesar dalam sejarah umat manusia adalah **_“Kemana saya setelah mati”?_** Banyak orang memikirkan pertanyaan ini dan belum menemukan jawaban yang pasti. Dalam ketidakpastian itu manusia mencari jawabannya dalam agama, filsafat, sains, bahkan dalam dirinya sendiri. Berharap mereka menemukan jawabannya. Beberapa orang menyerah dalam ketidaktahuan dan beberapa merasa sudah menemukan jawabannya, sekalipun hanya sekedar ikut-ikutan saja karena apa kata agamanya, dan apa kata mayoritas. Tetapi banyak juga orang yang tidak peduli (_karena tidak tahu_) dengan pertanyaan tersebut, bagi mereka jawaban atas pertanyaan tersebut tidak sepenting mencari _“sesuap nasi”_ atau kelangsungan bisnisnya. Tetapi apakah benar ada jawaban yang pasti atas pertanyaan tersebut? Kalau ada, dimana? 
 

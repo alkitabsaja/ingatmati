@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/apa-keselamatan-itu/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Saat ini Tuhan memerintahkan semua orang untuk bertobat dan percaya Hari ini adalah hari keselamatan anda bebas dari murka-Nya yang"
+excerpt: "Saat ini Tuhan memerintahkan semua orang untuk bertobat dan percaya Hari ini adalah hari keselamatan anda bebas dari murka-Nya yang besar untuk melepaskanmu dari kutuk Hukum Musa Dan masuk ke dalam kota perlindungan yaitu Yesus Kristus Tuhan kita Datang pada-Nya Pertobatan adalah hal berserah, Untuk"
 ---
 Saat ini Tuhan memerintahkan semua orang untuk bertobat dan percaya Hari ini adalah hari keselamatan anda bebas dari murka-Nya yang besar untuk melepaskanmu dari kutuk Hukum Musa Dan masuk ke dalam kota perlindungan yaitu Yesus Kristus Tuhan kita Datang pada-Nya Pertobatan adalah hal berserah, Untuk berhenti memberontak kepada Tuhan dan berhenti mengupayakan keselamatanmu dengan usahamu sendiri, hanya benar-benar berserah dan tersungkur kepada Kristus Itulah keselamatan.
 

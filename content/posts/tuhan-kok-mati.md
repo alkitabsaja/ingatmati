@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/tuhan-kok-mati/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Jika Tuhan mati, maka segala sesuatu akan lenyap, kesunyian tidak sunyi lagi, indahnya pelangi dan makanan yang terlezat tidak akan"
+excerpt: "Jika Tuhan mati, maka segala sesuatu akan lenyap, kesunyian tidak sunyi lagi, indahnya pelangi dan makanan yang terlezat tidak akan kita nikmati lagi. Kata “I Love You” yang merupakan salah satu kalimat terindah, tidak akan kita dengar lagi. Tapi apakah benar Tuhan mati? Dalam pengertian apa, Tuhan "
 ---
 Jika Tuhan mati, maka segala sesuatu akan lenyap, kesunyian tidak sunyi lagi, indahnya pelangi dan makanan yang terlezat tidak akan kita nikmati lagi. Kata _“I Love You”_ yang merupakan salah satu kalimat terindah, tidak akan kita dengar lagi. Tapi apakah benar Tuhan mati? Dalam pengertian apa, Tuhan mati? Tentu saja Tuhan tidak dapat mati dalam pengertian kuasa atau keberadaannya hilang.
 

@@ -7,7 +7,7 @@ layout: "post.njk"
 author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/abcd-keselamatan-jiwa/"
 categories: ["jalan yang lurus"]
-excerpt: "MatiKemana.com@alkitabsaja A: AKUILAH Tuhan Maha Adil, saya berdosa jadi Tuhan pasti harus menghukum semua dan setiap dosa saya.upah dosa terhadap"
+excerpt: "MatiKemana.com@alkitabsaja A: AKUILAH Tuhan Maha Adil, saya berdosa jadi Tuhan pasti harus menghukum semua dan setiap dosa saya.upah dosa terhadap Allah Yang Kekal adalah neraka kekal! Roma 3:23 Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah,Roma 6:23a (TB)  Sebab upah do"
 ---
 MatiKemana.com  
 @alkitabsaja

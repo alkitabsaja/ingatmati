@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/hari-pertama-orang-berdosa-di-neraka/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "(A Sinner’s First Day in Hell\\*) Oleh Dr. Denis Leatherman “Dan jika tanganmu menyesatkan engkau, penggallah, karena lebih baik engkau"
+excerpt: "(A Sinner’s First Day in Hell\\*) Oleh Dr. Denis Leatherman “Dan jika tanganmu menyesatkan engkau, penggallah, karena lebih baik engkau masuk ke dalam hidup dengan tangan kudung dari pada dengan utuh kedua tanganmu dibuang ke dalam neraka, ke dalam api yang tak terpadamkan” (Markus 9:43) Alkitab den"
 ---
 **(A Sinner’s First Day in Hell[\*](http://www.philadelphia-international.com/dr%20denis%20leatherman.htm#_ftn1))**
 

@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/jalan-ke-sorga/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "1. Akui bahwa Anda adalah orang berdosa. Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah – Roma 3:23. Sebab"
+excerpt: "1. Akui bahwa Anda adalah orang berdosa. Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah – Roma 3:23. Sebab itu, sama seperti dosa telah masuk ke dalam dunia oleh satu orang, dan oleh dosa itu juga maut, demikianlah maut itu telah menjalar kepada semua orang, karena semua "
 ---
 **1.** **Akui** bahwa Anda adalah orang berdosa.
 

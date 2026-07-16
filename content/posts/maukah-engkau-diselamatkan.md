@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/maukah-engkau-diselamatkan/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Semua manusia pada umumnya mendambakan keselamatan jiwanya setelah ia mati. Karena setiap orang tahu, dia adalah manusia berdosa yang akan"
+excerpt: "Semua manusia pada umumnya mendambakan keselamatan jiwanya setelah ia mati. Karena setiap orang tahu, dia adalah manusia berdosa yang akan dihukum karena dosa-dosanya. Itulah sebabnya manusia berusaha berbuat banyak kebaikan, memeluk agama tertentu, dengan harapan melalui hal-hal itu dia beroleh kes"
 ---
 Semua manusia pada umumnya mendambakan keselamatan jiwanya setelah ia mati. Karena setiap orang tahu, dia adalah manusia berdosa yang akan dihukum karena dosa-dosanya. Itulah sebabnya manusia berusaha berbuat banyak kebaikan, memeluk agama tertentu, dengan harapan melalui hal-hal itu dia beroleh keselamatan saat ia meninggal. Tapi, apakah benar amalnya dapat menyelamatkannya?
 

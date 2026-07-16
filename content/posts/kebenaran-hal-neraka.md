@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/kebenaran-hal-neraka/"
 categories: ["jalan yang lurus"]
 tags: ["neraka"]
-excerpt: "NERAKA ADALAH TEMPAT PENYIKSAAN(terjemahan repentancecry) Yesus berkata tentang neraka dalam Lukas 16:23 .. ia menderita sengsara di alam maut ..24"
+excerpt: "NERAKA ADALAH TEMPAT PENYIKSAAN(terjemahan repentancecry) Yesus berkata tentang neraka dalam Lukas 16:23 .. ia menderita sengsara di alam maut ..24 .. aku sangat kesakitan dalam nyala api ini.28 .. agar mereka jangan masuk (kjv:datang) kelak ke dalam tempat penderitaan (kjv: penyiksaan) ini. Secara "
 ---
 NERAKA ADALAH TEMPAT PENYIKSAAN  
 (terjemahan repentancecry)

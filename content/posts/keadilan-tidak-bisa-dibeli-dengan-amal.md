@@ -7,7 +7,7 @@ layout: "post.njk"
 author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/keadilan-tidak-bisa-dibeli-dengan-amal/"
 categories: ["jalan yang lurus"]
-excerpt: "Bayangkan pemilik dapur MBG korupsi 10M, hakim melepaskan orang tersebut karena dia memberikan santunan kepada 100 orang anak Yatim-Piatu. Adilkah?"
+excerpt: "Bayangkan pemilik dapur MBG korupsi 10M, hakim melepaskan orang tersebut karena dia memberikan santunan kepada 100 orang anak Yatim-Piatu. Adilkah? Seseorang berhutang 150 jt kepada orang lain, lalu berkata “Saya tidak membayar hutang, tapi kan saya sering berbuat baik kepada orang lain”. Adilkah? L"
 ---
 Bayangkan pemilik dapur MBG korupsi 10M, hakim melepaskan orang tersebut karena dia memberikan santunan kepada 100 orang anak Yatim-Piatu. Adilkah?
 

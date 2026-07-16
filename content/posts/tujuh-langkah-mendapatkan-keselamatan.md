@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/tujuh-langkah-mendapatkan-keselamatan/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Langkah pertama – Anda harus menyadari bahwa Anda adalah orang berdosa.“Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan"
+excerpt: "Langkah pertama – Anda harus menyadari bahwa Anda adalah orang berdosa.“Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah,” Roma 3:23 “Jika kita berkata, bahwa kita tidak ada berbuat dosa, maka kita membuat Dia menjadi pendusta dan firman-Nya tidak ada di dalam kita.” 1 Yoha"
 ---
 Langkah **pertama** – Anda harus menyadari bahwa Anda adalah orang berdosa.  
 “Karena semua orang telah berbuat dosa dan telah kehilangan kemuliaan Allah,” Roma 3:23

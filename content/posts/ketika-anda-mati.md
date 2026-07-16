@@ -8,7 +8,7 @@ author: "ingat mati"
 originalUrl: "https://www.matikemana.com/web1/ketika-anda-mati/"
 categories: ["jalan yang lurus"]
 tags: ["pasti ke sorga"]
-excerpt: "Manusia selama hidupnya berusaha semaksimal mungkin untuk senantiasa hidup bahagia dan menghindari segala bentuk kesusahan. Namun apa daya, pada kenyataannya,"
+excerpt: "Manusia selama hidupnya berusaha semaksimal mungkin untuk senantiasa hidup bahagia dan menghindari segala bentuk kesusahan. Namun apa daya, pada kenyataannya, manusia lebih banyak mengalami penderitaan daripada kebahagiaan, sehingga dunia ini telah menjadi lembah air mata bagi manusia. Manusia bahka"
 ---
 Manusia selama hidupnya berusaha semaksimal mungkin untuk senantiasa hidup bahagia dan menghindari segala bentuk kesusahan. Namun apa daya, pada kenyataannya, manusia lebih banyak mengalami penderitaan daripada kebahagiaan, sehingga dunia ini telah menjadi lembah air mata bagi manusia. Manusia bahkan dihantui oleh penderitaan yang lebih hebat lagi yang akan mereka alami setelah kematian, yaitu disiksa di neraka selama-lamanya oleh karena dosa-dosa yang mereka lakukan.
 

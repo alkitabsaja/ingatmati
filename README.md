@@ -238,6 +238,46 @@ The included GitHub Actions workflow already sets both correctly for both
 GitHub Pages and Surge deploys. If you add another host, set `SITE_URL`
 (and `PATH_PREFIX` if it serves from a subpath) in that build step too.
 
+## Archiving to the Wayback Machine
+
+`scripts/archive-to-wayback.js` submits every fetched post/page's original
+WordPress URL (the `originalUrl` frontmatter field) to the Internet
+Archive's [Save Page Now](https://web.archive.org) API, so each piece of
+content gets an independent, permanent backup snapshot outside of both
+WordPress and this repo.
+
+```bash
+npm run archive
+```
+
+Run this any time after `npm run fetch` (it reads `originalUrl` out of the
+Markdown files that step writes). It's already wired into the included
+GitHub Actions workflow as an optional step that runs right after fetching
+and before committing.
+
+**How it works:**
+- Tracks progress in `.archive-state.json` (committed to the repo alongside
+  fetched content), so reruns only archive URLs that haven't been archived
+  yet — not the entire site every time.
+- Waits `ARCHIVE_DELAY_MS` (default 5000ms) between requests to stay under
+  archive.org's rate limits.
+- If archive.org returns a 429 (rate limited), it stops early and leaves
+  the remaining URLs for the next run rather than hammering the API.
+- Failures are never retried automatically within the same run, but aren't
+  marked as done either — they'll be retried on the next run.
+- In CI, this step uses `continue-on-error: true`, so a Wayback Machine
+  outage or rate-limit never blocks your actual site deploy.
+
+**Recommended: get a free API key** for much more reliable archiving
+(anonymous requests are heavily rate-limited). Get one at
+[archive.org/account/s3.php](https://archive.org/account/s3.php), then set:
+
+- Locally: `ARCHIVE_ORG_ACCESS_KEY` / `ARCHIVE_ORG_SECRET_KEY` env vars
+- In CI: add both as repository secrets with the same names
+
+Without a key, the script still works, just expect more `FAILED` /
+rate-limited lines in the log — those URLs simply get retried next run.
+
 ## Project structure
 
 ```
@@ -256,6 +296,7 @@ GitHub Pages and Surge deploys. If you add another host, set `SITE_URL`
 ├── static/css/style.css   ← small overrides on top of Pico CSS
 ├── scripts/
 │   ├── fetch-content.js   ← WP REST API → Markdown converter
+│   ├── archive-to-wayback.js  ← submits original URLs to the Wayback Machine
 │   └── date-shim.js       ← tiny date formatter (no external deps)
 ├── eleventy.config.js
 ├── .github/workflows/deploy.yml

@@ -62,6 +62,14 @@ jobs:
           WP_SITE_URL: ${{ secrets.WP_SITE_URL }}
         run: npm run fetch
 
+      - name: Archive original WordPress URLs to the Wayback Machine
+        if: steps.skip_check.outputs.skip == 'false'
+        continue-on-error: true # never block the site deploy on archive.org being flaky/rate-limiting
+        env:
+          ARCHIVE_ORG_ACCESS_KEY: ${{ secrets.ARCHIVE_ORG_ACCESS_KEY }}
+          ARCHIVE_ORG_SECRET_KEY: ${{ secrets.ARCHIVE_ORG_SECRET_KEY }}
+        run: npm run archive
+
       - name: Commit fetched content back to repo
         if: steps.skip_check.outputs.skip == 'false'
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -69,7 +77,7 @@ jobs:
           commit_message: "content: sync from WordPress"
           commit_user_name: "wp-sync-bot"
           commit_user_email: "actions@users.noreply.github.com"
-          file_pattern: "content/posts content/pages content/assets"
+          file_pattern: "content/posts content/pages content/assets .archive-state.json"
 
   # Builds with a /<repo-name>/ path prefix (how GitHub Pages serves project
   # repos) and deploys via the Pages API.

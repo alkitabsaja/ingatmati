@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "fetch": "node scripts/fetch-content.js",
+    "archive": "node scripts/archive-to-wayback.js",
     "build": "eleventy",
     "serve": "eleventy --serve",
     "clean": "rm -rf _site content/posts/*.md content/pages/*.md",

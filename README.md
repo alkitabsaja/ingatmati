@@ -259,6 +259,11 @@ and before committing.
 - Tracks progress in `.archive-state.json` (committed to the repo alongside
   fetched content), so reruns only archive URLs that haven't been archived
   yet — not the entire site every time.
+- Archives at most `ARCHIVE_BATCH_SIZE` URLs per run (default: **5**). The
+  rest are left for the next run — since the scheduled workflow runs every
+  6 hours, a large backlog of posts gets fully archived gradually over
+  several runs rather than all at once. Safe to just let it run on its
+  normal schedule, or re-run manually to work through a backlog faster.
 - Waits `ARCHIVE_DELAY_MS` (default 5000ms) between requests to stay under
   archive.org's rate limits.
 - If archive.org returns a 429 (rate limited), it stops early and leaves
@@ -278,6 +283,25 @@ and before committing.
 Without a key, the script still works, just expect more `FAILED` /
 rate-limited lines in the log — those URLs simply get retried next run.
 
+## RSS feed
+
+An RSS 2.0 feed is generated automatically at `/feed.xml`, listing every
+post (newest first) with full HTML content, so people can subscribe in
+their feed reader of choice.
+
+- **Auto-discovery:** every page includes a `<link rel="alternate">` tag in
+  `<head>` so browsers and feed readers can find the feed automatically.
+  There's also a plain "RSS feed" link in the site footer.
+- **Full content, not just excerpts:** each item includes the complete
+  rendered post body (`<content:encoded>`), plus the excerpt as the
+  standard `<description>`, so feed readers that only support one or the
+  other both get something useful.
+- Includes author (`<dc:creator>`) and categories when present in a post's
+  frontmatter.
+- Respects `SITE_URL` and `PATH_PREFIX` the same way every other absolute
+  URL in the site does — no extra configuration needed beyond what you've
+  already set up for canonical tags and the sitemap.
+
 ## Project structure
 
 ```
@@ -287,6 +311,7 @@ rate-limited lines in the log — those URLs simply get retried next run.
 │   ├── pages/           ← generated .md files (one per WP page)
 │   ├── assets/images/   ← downloaded featured images
 │   ├── index.njk        ← homepage template (lists posts)
+│   ├── feed.xml.njk      ← generated RSS 2.0 feed
 │   ├── robots.txt.njk    ← generated robots.txt
 │   └── sitemap.xml.njk   ← generated sitemap.xml
 ├── _includes/

@@ -14,6 +14,9 @@
      has no WP equivalent). #}
   <link rel="canonical" href="{{ originalUrl or (page.url | absoluteUrl) }}">
 
+  {# Lets browsers and feed readers auto-detect the RSS feed. #}
+  <link rel="alternate" type="application/rss+xml" title="My Static Blog" href="{{ '/feed.xml' | absoluteUrl }}">
+
   {# Open Graph / Twitter card tags for link previews on social platforms
      and chat apps. og:url intentionally points at *this* static site's own
      URL (not originalUrl) since that's where the share link actually goes. #}
@@ -72,7 +75,10 @@
   </main>
 
   <footer class="container">
-    <small>mirror matikemana.com</small>
+    <small>
+      mirror matikemana.com
+      &middot; <a href="{{ '/feed.xml' | url }}">RSS feed</a>
+    </small>
   </footer>
 
   <script>

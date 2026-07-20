@@ -1,0 +1,35 @@
+---
+permalink: "/feed.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>My Static Blog</title>
+  <link>{{ '/' | absoluteUrl }}</link>
+  <atom:link href="{{ '/feed.xml' | absoluteUrl }}" rel="self" type="application/rss+xml" />
+  <description>Latest posts</description>
+  <language>en</language>
+  {%- if collections.posts.length %}
+  <lastBuildDate>{{ collections.posts[0].data.modified | rfc822Date }}</lastBuildDate>
+  {%- endif %}
+{%- for post in collections.posts %}
+  <item>
+    <title>{{ post.data.title }}</title>
+    <link>{{ post.url | absoluteUrl }}</link>
+    <guid isPermaLink="true">{{ post.url | absoluteUrl }}</guid>
+    <pubDate>{{ post.data.date | rfc822Date }}</pubDate>
+    {%- if post.data.author %}
+    <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ post.data.author }}</dc:creator>
+    {%- endif %}
+    {%- if post.data.categories %}
+    {%- for cat in post.data.categories %}
+    <category>{{ cat }}</category>
+    {%- endfor %}
+    {%- endif %}
+    <description><![CDATA[{{ post.data.excerpt or "" }}]]></description>
+    <content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[{{ post.templateContent | safe }}]]></content:encoded>
+  </item>
+{%- endfor %}
+</channel>
+</rss>

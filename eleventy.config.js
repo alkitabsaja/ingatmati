@@ -52,6 +52,14 @@ export default function (eleventyConfig) {
     return isNaN(d.getTime()) ? String(dateObj) : d.toISOString();
   });
 
+  // RFC-822 date format required by the RSS 2.0 spec for <pubDate>, e.g.
+  // "Mon, 20 Jul 2026 00:00:00 GMT". JS's Date#toUTCString produces exactly
+  // this format, so no extra library is needed.
+  eleventyConfig.addFilter("rfc822Date", (dateObj) => {
+    const d = new Date(dateObj);
+    return isNaN(d.getTime()) ? String(dateObj) : d.toUTCString();
+  });
+
   // Prefixes an absolute path with pathPrefix, e.g. "/css/style.css" becomes
   // "/my-repo/css/style.css" when deployed under a project subpath.
   // Use this for every internal absolute link/src/href in templates.

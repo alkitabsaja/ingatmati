@@ -9,7 +9,7 @@ on:
   # Rebuild automatically on a schedule to pick up new WordPress content.
   # This example runs every 6 hours — adjust to taste.
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 1 * * 5"
 
   # Lets you trigger a rebuild manually from the Actions tab.
   workflow_dispatch:
